@@ -1,0 +1,207 @@
+
+
+body {
+	font-family: "roboto";
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+
+
+
+.imageDiv {
+	width: 100vw; 
+	height: 60vh; 
+	overflow: hidden;
+}
+
+.headerPic {
+	position: relative;
+	min-width: 100%; 
+}
+
+.pageTitle {
+	font-size: 3em; 
+	font-weight: 700; 
+	position: absolute;
+	top: 90px; 
+	left: 40px; 
+	color: black;
+}
+
+.contentHeading {
+	font-size: 2.5em; 
+	margin-left: 5%; 
+	margin-top: 50px; 
+	font-weight: 700;
+
+}
+
+.contentDesc {
+	font-size: 1.5em;
+	margin-left: 8%;
+	width: 70%;  
+	font-weight: 500;
+}
+
+.detailButton {
+    width: 150px;
+    height: 46px; 
+    background-color: #F89406;
+    color: white;
+    padding: 14px 20px;
+    margin-bottom: 10px; 
+    margin-top: 20px; 
+    margin-left: 8%;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 300;
+    transition: background-color 0.5s; 
+    outline: 0;
+}
+
+.detailButton:hover {
+	background-color: #f86e05;
+
+}
+
+
+#eboardDiv {
+	/*margin-left: 8%;
+	margin-right: 2%;*/
+	width: 1028px;
+	display: block;
+	margin: 0 auto;
+	margin-top: 40px; 
+	margin-bottom: 80px; 
+
+}
+
+@media screen and (max-width:1030px) {
+	#eboardDiv {
+		width: 685px; 
+	}
+}
+
+@media screen and (max-width:685px) {
+	#eboardDiv {
+		width: 340px; 
+	}
+}
+
+.eboardProfile {
+	width: 300px; 
+	height: 550px; 
+	margin: 15px 20px 15px;
+	background-color: rgba(198, 198, 198, 0.4);
+	border-radius: 15px; 
+	display: inline-block;
+	vertical-align: top;
+}
+
+@media screen and (max-width:350px) {
+	.eboardProfile {
+		width: 280px; 
+	}
+}
+
+.ePhoto {
+	border-radius: 50%; 
+	border-style: solid;
+	border-width: 3px;
+	border-color: #F89406;
+	width: 150px; 
+	display: block;
+	margin: 0 auto;
+	margin-top: 15px; 
+}
+
+.eName {
+	text-align: center;
+	font-size: 1.8em;
+	font-weight: 500;
+	margin-top: 10px; 
+	margin-bottom: 0; 
+}
+
+.ePosition {
+	text-align: center; 
+	font-size: 1.2em; 
+	font-weight: 300; 
+	margin-top: 5px; 
+}
+
+.eBio {
+	font-size: 1em; 
+	font-weight: 300; 
+	margin-top: 5px; 
+	margin-left: 10px; 
+	margin-right: 10px; 
+	height: 190px; 
+}
+
+.eEmail {
+	color: white;
+}
+
+.eLink {
+	width: 50px;
+    height: 50px; 
+    background-color: #909193;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.5em;
+    display: block;
+    margin: 0 auto;
+    margin-top: 15px; 
+    outline: 0;
+    transition: background-color 0.5s; 
+    -webkit-appearance: none;
+}
+
+.eLink:hover {
+	background-color: #696a6d;
+}
+
+
+.footer {
+	width: 100%; 
+	background-color: #bfc0c1;
+	text-align: center; 
+	padding-top: 20px; 
+	padding-bottom: 20px; 
+	margin-top: 50px; 
+}
+
+.footerTitle {
+	margin-top: 0;
+	font-size: 1.5em;
+}
+
+.footerLink {
+	color: #3b3c3d;
+	text-decoration: underline;
+}
+
+.footerEnd {
+	margin-top: 24px; 
+	font-size: 0.5em; 
+}
+
+
+@media screen and (max-width:975px) {
+
+	.contentDesc {
+		width: 90%; 
+		margin-right: 2%; 
+	}
+
+}
