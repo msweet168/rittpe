@@ -3,9 +3,7 @@
 ?>
 	<title>TPE Members</title>
 <?php
-	require_once("sitewide/header.php"); 
-	require_once("sitewide/membersnav.php");
-
+	
 	if (!isset($_SESSION['loggedIn'])) {
   		$_SESSION['loggedIn'] = FALSE;
 
@@ -17,14 +15,18 @@
 		header('Location: login.php');
 	}
 	else {
+		require_once("sitewide/header.php"); 
+	    require_once("sitewide/membersnav.php");
   		echo "Hello ".$_SESSION["userfirstname"]."! Everything is good.";
 	}
 
+
 ?>
 
+<h1>Stuff here</h1>
 
-
-
+</div>
+<script src="assets/js/scripts.js"></script>
 <?php 
     // require_once("sitewide/footer.php");
 ?>

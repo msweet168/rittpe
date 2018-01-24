@@ -1,0 +1,4 @@
+Options -Indexes
+ErrorDocument 404 /~mitchell/tpe/notfound.php
+ErrorDocument 403 /~mitchell/tpe/noperm.php
+ErrorDocument 500 /~mitchell/tpe/servererr.php

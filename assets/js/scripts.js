@@ -8,3 +8,11 @@ function menuFunction() {
         x.className = "topnav";
     }
 }
+
+function expand() {
+	document.getElementById("memCont").style.marginLeft = "200px";
+}
+
+function contract() {
+	document.getElementById("memCont").style.marginLeft = "80px";
+}
