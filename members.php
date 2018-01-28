@@ -20,7 +20,6 @@
   		echo "Hello ".$_SESSION["userfirstname"]."! Everything is good.";
 	}
 
-
 ?>
 
 <h1>Stuff here</h1>

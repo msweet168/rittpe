@@ -50,6 +50,10 @@ if (!empty($_POST)) {
 	        $timestamp = date('Y-m-d H:i:s');
 	        mysqli_query($mysqli, "UPDATE Profiles SET lastlogin = \"".$timestamp."\" WHERE id = \"".$_SESSION['userid']."\"");
 
+	        if (!isset($_SESSION['redirect'])) {
+		  		$_SESSION['redirect'] = "members.php"; 
+			} 
+
 	        header('Location: '.$_SESSION['redirect'].'');
 	    }
 	    else {

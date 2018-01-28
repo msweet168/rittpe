@@ -46,46 +46,32 @@
 
 
 		for ($i=0; $i<count($positions); $i++) { 
-			$eboardQuery = "SELECT * FROM Eboard WHERE Position = \"".$positions[$i]."\""; 
+			$eboardQuery = "SELECT Eboard.Position, Eboard.bio, Profiles.propic, Profiles.firstname, Profiles.lastname, Profiles.email
+							FROM Eboard 
+							JOIN Profiles
+							ON Eboard.username = Profiles.username
+							WHERE Eboard.Position = \"".$positions[$i]."\";"; 
 			$eboardResult = mysqli_query($mysqli, $eboardQuery);
 
 			while ($row = mysqli_fetch_assoc($eboardResult)) {
 
+				$fullname = "".$row['firstname']." ".$row['lastname']; 
+
 				echo "
 					<div class=\"eboardProfile\">
 					<img src=\"media/eboardPhotos/mitchell.jpg\" alt=\"Profile Picture\" class=\"ePhoto\">
-					<p class=\"eName\">".$row["Name"]."</p>
+					<p class=\"eName\">".$fullname."</p>
 					<p class=\"ePosition\">".$row["Position"]."</p>
-					<p class=\"eBio\">".$row["Bio"]."</p>
+					<p class=\"eBio\">".$row["bio"]."</p>
 					<hr>
-					<button type=\"button\" class=\"eLink\" onclick=\"window.location.href=\"mailto:".$row["Email"]."\">@</button>
+					<button type=\"button\" class=\"eLink\" onclick=\"window.location.href=\"mailto:".$row['email']."\">@</button>
 					</div>
 					";
-
-
-		   	   // echo "
-	                // <div class=\"eboardText\">
-					// <h1 class=\"eboardPosition\">".$row["Position"]."</h1>
-					// <p class=\"eboardName\">".$row["Name"]."</p>
-					// <a href=\"mailto:".$row["Email"]."\" class=\"eboardEmail\"><p>".$row["Email"]."</p></a>
-					// <p class=\"eboardBio\">".$row["Bio"]."</p>
-					// </div>
-					// <img src=\"media/logos/black_logo.png\" alt=\"Profile Picture\" class=\"eboardPhoto\">
-		   			// ";
 
 		    }
 			
 		}
 	?>
-
-   <!-- <div class="eboardProfile">
-		<img src="media/eboardPhotos/mitchell.jpg" alt="Profile Picture" class="ePhoto">
-		<p class="eName">Caroline Kruse</p>
-		<p class="ePosition">President</p>
-		<p class="eBio">Caroline Kruse is a fifth year Mechanical Engineer minoring in Electrical Engineering. She is in the Dual Degree program and will be completing her B.S. and M.Eng. degrees in May. She experienced her first Theme Park Industry co-op  with Universal this summer and loved it! She's looking forward to working full time in the industry soon!</p>
-		<hr>
-        <button type="button" class="eLink" onclick="window.location.href='http://www.apple.com'">@</button>
-	    </div> -->
 
 </div>
 

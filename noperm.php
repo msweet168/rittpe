@@ -1,10 +1,10 @@
 <?php
-	require_once("/sitewide/opener.php");
+	require_once("sitewide/opener.php");
 ?>
 	<title>TPE - Forbidden</title>
 <?php
-	require_once("/sitewide/header.php");
-	require_once("/sitewide/nav.php"); 
+	require_once("sitewide/header.php");
+	require_once("sitewide/nav.php"); 
 ?>
 
 <div class="headerDiv">

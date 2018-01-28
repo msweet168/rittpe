@@ -99,14 +99,14 @@
     opacity: 0.3;
 }
 
-.memberNav li a.active {
+.memberNav li a.current {
 	background-color: rgb(25, 35, 45);
 	/*color: rgba(255, 255, 255, 1);*/
 	color: #FFFFFF;
 	opacity: 1;
 }
 
-.memberNav li a:hover:not(.active) {
+.memberNav li a:hover:not(.current) {
     background-color: rgb(35, 49, 63);
     opacity: 0.7;
 }
@@ -130,20 +130,6 @@
 	display: inline;
 	text-align: center;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 #loginDiv {
@@ -216,6 +202,42 @@
 
 #loginButton:hover {
 	background-color: #f2652e;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.quoteDiv {
+	display: block;
+	margin: 0 auto;
+	width: 85%;
+	height: 100px; 
+	border-radius: 5px; 
+	/*border-color: #dee0e2;
+	border-style: solid;*/
+	background-color: #dee0e2;
+	box-shadow: 2px 5px #eff2f4;
+
+
 }
 
 
