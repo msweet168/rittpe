@@ -17,7 +17,7 @@
 	else {
 		require_once("sitewide/header.php"); 
 	    require_once("sitewide/membersnav.php");
-  		echo "Hello ".$_SESSION["userfirstname"]."! Everything is good, let's read some quotes!<br>";
+  		echo "Hello ".$_SESSION["userfirstname"]."! Everything is good, let's read some quotes!<br>";.
 	}
 
 ?>
@@ -42,7 +42,7 @@
 ?>
 
 <div class="quoteDiv">
-	
+
 
 </div>
 
