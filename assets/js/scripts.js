@@ -16,3 +16,27 @@ function expand() {
 function contract() {
 	document.getElementById("memCont").style.marginLeft = "80px";
 }
+
+function quoteValidate() {
+	var quote = document.getElementById("quoteField"); 
+	var quotee = document.getElementById("quoteeField");
+	var problem = false; 
+
+	if (!quote.value) {
+		quote.style.borderColor = "red";
+		problem = true;
+	}
+
+	if (!quotee.value) {
+		quotee.style.borderColor = "red";
+		problem = true;
+	}
+
+	if (problem == true) {
+		return false;
+	}
+	else {
+		return true;
+	}
+
+}

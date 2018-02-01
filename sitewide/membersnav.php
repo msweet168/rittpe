@@ -6,7 +6,7 @@
 
 			<img src="media/icons/profile.svg" alt="profile" class="navImg">
 
-			<p class="navText">Profile</p>
+			<p class="navText">Profiles</p>
 
 		</div>
 	</a></li>

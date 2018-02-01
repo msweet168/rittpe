@@ -6,6 +6,10 @@
 <?php
 $loginFailed = false; 
 
+if ($_SESSION['loggedIn'] == true) {
+	header('Location: members.php');
+}
+
 if (!isset($_SESSION['loginRetries'])) {
   	$_SESSION['loginRetries'] = 0;
 }
@@ -21,14 +25,14 @@ if (!empty($_POST)) {
 	  if ($result && $num_rows > 0) {
 
 	    $success = false; 
+	    $username = htmlentities(strip_tags(trim($_POST["username"])));
+        $username = mysqli_real_escape_string($mysqli, $username);
+
+        $password = htmlentities(strip_tags(trim($_POST["password"])));
+        $password = mysqli_real_escape_string($mysqli, $password);
+        $password = sha1($password);
+
 	    while ($row = mysqli_fetch_assoc($result)) {
-	        $username = htmlentities(strip_tags(trim($_POST["username"])));
-	        $username = mysqli_real_escape_string($mysqli, $username);
-
-	        $password = htmlentities(strip_tags(trim($_POST["password"])));
-	        $password = mysqli_real_escape_string($mysqli, $password);
-	        $password = sha1($password);
-
 
 	        if((($row["username"] == $username) || ($row["email"] == $username)) &&  ($row["password"] == $password)) {
 	          $success = true; 
@@ -41,6 +45,7 @@ if (!empty($_POST)) {
 	          $_SESSION['memberstatus'] = $row["status"]; 
 	          $_SESSION['coastercount'] = $row["coastercount"]; 
 	          $_SESSION['creationdate'] = $row["creationdate"];
+	          $_SESSION['picPath'] = $row['propic'];
 	        } 
 	    }
 

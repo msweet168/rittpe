@@ -17,12 +17,108 @@
 	else {
 		require_once("sitewide/header.php"); 
 	    require_once("sitewide/membersnav.php");
-  		echo "Hello ".$_SESSION["userfirstname"]."! Everything is good.";
+  		// echo "Hello ".$_SESSION["userfirstname"]."! Everything is good.";
 	}
 
 ?>
 
-<h1>Stuff here</h1>
+<div class="membersPageTitle"> 
+	<span class="orangeTitle">Profiles</span>
+	<h2 class="memPageDesc">Welcome back <?=$_SESSION["userfirstname"]?>!</h2>
+</div>
+
+
+<div class="infoPanels"> 
+	<div class="namePanel">
+		<img class="proPic" src="media/icons/profileOrange.svg" alt="Profile Picture">
+
+		<div class="memName">
+			<h1 class="memberName"><?=$_SESSION['userfirstname'].' '.$_SESSION['userlastname']?></h1>
+			<h2 class="memberStatus"><?=$_SESSION['memberstatus']?></h2>
+		</div>
+
+	</div>
+	<div class="stdInfoPanel"> 
+		<div class="panelTitleSec">
+			<p class="panelTitle">Personal Info</p>
+		</div>
+		<p class="panelInfo"><strong>Name:</strong> <?=$_SESSION['userfirstname'].' '.$_SESSION['userlastname']?></p>
+		<p class="panelInfo"><strong>Username:</strong> <?=$_SESSION['username']?></p>
+		<p class="panelInfo"><strong>Email:</strong> <?=$_SESSION['useremail']?></p>
+	</div>
+	<div class="stdInfoPanel"> 
+		<div class="panelTitleSec">
+			<p class="panelTitle">Membership Info</p>
+		</div>
+		<p class="panelInfo"><strong>Status:</strong> <?=$_SESSION['memberstatus']?></p>
+		<p class="panelInfo"><strong>Account Created:</strong> <?=$_SESSION['creationdate']?></p>
+
+	</div>
+	<div class="stdInfoPanel"> 
+		<div class="panelTitleSec">
+			<p class="panelTitle">Other Info</p>
+		</div>
+		<p class="panelInfo"><strong>Coaster Count:</strong> <?=$_SESSION['coastercount']?></p>
+		<p class="panelInfo"><strong>Site Permissions:</strong> <?=$_SESSION['userpermission']?></p>
+	</div>
+</div>
+
+<hr>
+
+<!-- <div class="allMemPanels">
+	<div class="memberPanels"> 
+		<div class="panelTitleSec">
+			<img class="miniProPic" src="media/icons/profileOrange.svg" alt="profile">
+			<p class="panelTitle">Name</p>
+		</div>
+		<p class="panelInfo"><strong>..status..</strong></p>
+		<p class="panelInfo"><strong>Username:</strong>  </p>
+		<p class="panelInfo"><strong>Email:</strong>  </p>
+		<p class="panelInfo"><strong>Coastercount:</strong>  </p>
+	</div>
+</div> -->
+
+<?php
+	$query = "SELECT firstname, lastname, status, username, email, coastercount, propic FROM Profiles";
+	$result = mysqli_query($mysqli, $query); 
+  	$num_rows = mysqli_affected_rows($mysqli);
+
+  	if ($result && $num_rows > 0) {
+
+  		$memberNum = $num_rows-1;
+
+  		echo "<h2 style=\"margin-left: 25px;\">All members:</h2>";
+  		echo "<div class=\"allMemPanels\">";
+
+    while ($row = mysqli_fetch_assoc($result)) {
+    	if ($row['username'] != $_SESSION['username'] && $row['username'] != "admin" && $row['username'] != "guest") {
+
+    		$fullname = $row['firstname']." ".$row['lastname'];
+    		echo "
+				
+					<div class=\"memberPanels\"> 
+						<div class=\"panelTitleSec\">
+							<img class=\"miniProPic\" src=\"media/icons/profileOrange.svg\" alt=\"profile\">
+							<p class=\"panelTitle\">".$fullname."</p>
+						</div>
+						<p class=\"panelInfo\"><strong> ".$row['status']."</strong></p>
+						<p class=\"panelInfo\"><strong>Username: </strong>".$row['username']."</p>
+						<p class=\"panelInfo\"><strong>Email: </strong>".$row['email']."</p>
+						<p class=\"panelInfo\"><strong>Coastercount: </strong>".$row['coastercount']."</p>
+					</div>
+    		";
+
+    	}
+    }
+
+    echo"</div>";
+
+   }
+
+?>
+
+
+
 
 </div>
 <script src="assets/js/scripts.js"></script>
