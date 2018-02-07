@@ -11,10 +11,28 @@ function menuFunction() {
 
 function expand() {
 	document.getElementById("memCont").style.marginLeft = "200px";
+	document.getElementsByClassName("sideBar")[0].style.width = "200px";
+	document.getElementsByClassName("memberNav")[0].style.width = "200px";
 }
 
 function contract() {
 	document.getElementById("memCont").style.marginLeft = "80px";
+	document.getElementsByClassName("sideBar")[0].style.width = "80px";
+	document.getElementsByClassName("memberNav")[0].style.width = "80px";
+}
+
+function showEdit() {
+	var editWindow = document.getElementById("editPopup");
+
+	if (editWindow.style.display == "block") {
+		editWindow.style.display = "none";
+		editWindow.style.top = "-30%";
+	}
+	else {
+		editWindow.style.display = "block";
+		setTimeout(function(){editWindow.style.top = "50%";}, 10); 
+	}
+
 }
 
 function quoteValidate() {
@@ -38,5 +56,4 @@ function quoteValidate() {
 	else {
 		return true;
 	}
-
 }

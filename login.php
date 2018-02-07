@@ -105,4 +105,7 @@ if (!empty($_POST)) {
 </div>
 
 
+<a id="githubLink" href="https://github.com/msweet168/rittpe">Website on <img src="media/icons/GithubLogo.png" alt="github" style="width: 15px;"> Github</a>
+
+
 <script src="scripts.js"></script>

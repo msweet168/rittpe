@@ -3,6 +3,40 @@
 ?>
 	<title>TPE Members</title>
 <?php
+
+	// if (!empty($_POST)) {
+
+	// 	if(isset($_POST["delete"])) {
+	// 		$query = "DELETE FROM Quotes WHERE quoteid = '".$_POST["delete"]."'";
+	// 		mysqli_query($mysqli, $query);
+	// 	}
+	// 	else if($_POST["quote"]!="" && $_POST["quotee"]!=""){
+	// 		$quote = htmlentities(strip_tags(trim($_POST["quote"])));
+	//         $quote = mysqli_real_escape_string($mysqli, $quote);
+
+	//         $quotee = htmlentities(strip_tags(trim($_POST["quotee"])));
+	//         $quotee = mysqli_real_escape_string($mysqli, $quotee);
+
+	//         $query = "INSERT INTO Quotes
+	//                   SET poster ='".$_SESSION['userfirstname']."',
+	//                       posterusername ='".$_SESSION['username']."', 
+	//                       quotee = '".$quotee."',
+	//                       quote = '".$quote."'"; 
+
+	//         $result = mysqli_query($mysqli, $query); 
+	//         $num_rows = mysqli_affected_rows($mysqli); 
+
+	//         if ($result && $num_rows > 0) {
+	//         	$quoteSuccess = "<h2 style=\"text-align: center\">Quote added!</h2>";
+	//         }
+ //    	}
+ //    	else {
+ //    		echo"<p>Database error. Please try again...</p>";
+ //    	}
+	// }
+
+
+
 	
 	if (!isset($_SESSION['loggedIn'])) {
   		$_SESSION['loggedIn'] = FALSE;
@@ -27,6 +61,29 @@
 	<h2 class="memPageDesc">Welcome back <?=$_SESSION["userfirstname"]?>!</h2>
 </div>
 
+<div id="editPopup">
+	<h1 id="editTitle">Edit Profile</h1>
+	<form method="post" style="text-align: center;"> 
+	 	<p class="forgot">Edit your information and click "update."</p>
+
+		<input name="fname" class="editField" value="<?= $_SESSION["userfirstname"]?>"/>
+		<input name="lname" class="editField" value="<?= $_SESSION["userlastname"]?>"/><br/>
+
+		<input name="email" class="editField" value="<?= $_SESSION["useremail"]?>"/>
+		<input name="email" class="editField" value="<?= $_SESSION["coastercount"]?>"/><br/>
+
+		<input name="pass" type="password" class="editField" placeholder="Enter new password..."/>
+		<input name="passconf" type="password" class="editField" placeholder="Confirm new password..."/><br/>
+
+		<input type="submit" value="Update" class="editSubmitButton"/>
+		<button class="editSubmitButton" onclick="showEdit()" />Cancel</button>
+
+
+	</form>
+
+
+</div>
+
 
 <div class="infoPanels"> 
 	<div class="namePanel">
@@ -36,6 +93,14 @@
 			<h1 class="memberName"><?=$_SESSION['userfirstname'].' '.$_SESSION['userlastname']?></h1>
 			<h2 class="memberStatus"><?=$_SESSION['memberstatus']?></h2>
 		</div>
+
+		<?php
+			if ($_SESSION["userpermission"] != "guest") {
+				echo "
+					<button type=\"button\" class=\"editButton\" onclick=\"showEdit()\">Edit Profile</button>
+				";
+			}
+		?>
 
 	</div>
 	<div class="stdInfoPanel"> 
@@ -65,18 +130,6 @@
 
 <hr>
 
-<!-- <div class="allMemPanels">
-	<div class="memberPanels"> 
-		<div class="panelTitleSec">
-			<img class="miniProPic" src="media/icons/profileOrange.svg" alt="profile">
-			<p class="panelTitle">Name</p>
-		</div>
-		<p class="panelInfo"><strong>..status..</strong></p>
-		<p class="panelInfo"><strong>Username:</strong>  </p>
-		<p class="panelInfo"><strong>Email:</strong>  </p>
-		<p class="panelInfo"><strong>Coastercount:</strong>  </p>
-	</div>
-</div> -->
 
 <?php
 	$query = "SELECT firstname, lastname, status, username, email, coastercount, propic FROM Profiles";
@@ -116,7 +169,6 @@
    }
 
 ?>
-
 
 
 
