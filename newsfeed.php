@@ -1,7 +1,7 @@
 <?php
 	require_once("sitewide/opener.php");
 ?>
-	<title>TPE Members</title>
+	<title>TPE Newsfeed</title>
 <?php
 	
 	if (!isset($_SESSION['loggedIn'])) {

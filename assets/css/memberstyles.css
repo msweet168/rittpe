@@ -488,7 +488,6 @@
 	background-color: #FFFFFF;
 	height: 55px;
 	vertical-align: middle;
-
 }
 
 .quoteFooter {
@@ -500,7 +499,9 @@
 .quote {
 	font-weight: 400;
 	margin-left: 25px;
-	line-height: 55px; 
+	margin-right: 25px; 
+	padding-top: 20px; 
+	/*line-height: 55px;*/ 
 
 }
 
@@ -513,7 +514,7 @@
 .quoteTextBox {
 	font-size: 16px;
 	font-weight: bold;
-	color: #AAAAAA;
+	color: #000000;
 	background-color: rgba(0,0,0,0);
 	border-top: none;
 	border-left: none;
@@ -532,12 +533,12 @@
 
 .quoteTextBox:hover {
 	border-color: #AAAAAA;
-	color: #606060;
+	color: #000000;
 }
 
 .quoteTextBox:focus {
 	outline: none;
-	color: #606060;
+	color: #000000;
 	border-bottom: none;
 	padding-left: 20px;
 	margin-bottom: 2px;
