@@ -399,6 +399,17 @@
 }
 
 
+#editHeader {
+	margin-bottom: 15px; 
+}
+
+.editFieldTitle {
+	margin-right: 10%; 
+	margin-left: 12%;
+	display: inline;
+}
+
+
 .editField {
 	width: 200px;
 	height: 45px; 

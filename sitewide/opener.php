@@ -10,7 +10,10 @@
 	// $pass = $db['pass'];
 	// $name = $db['name'];
 
-	$mysqli = mysqli_connect($db['host'], $db['user'], $db['pass'], $db['name']);
+	$mysqli = mysqli_init();
+	mysqli_ssl_set($mysqli, NULL, NULL, '/etc/ssl/certs/ca-bundle.crt', NULL, NULL);
+
+	mysqli_real_connect($mysqli, $db['host'], $db['user'], $db['pass'], $db['name'], 3306, MYSQLI_CLIENT_SSL);
 
 	$msg = "";
 
