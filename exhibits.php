@@ -20,16 +20,16 @@
 
 <div class="gallery cf">
   <div>
-    <img src="media/exhibitPhotos/1.jpg" />
+    <img src="media/exhibitPhotos/1.JPG" />
   </div>
   <div>
-    <img src="media/exhibitPhotos/3.jpg" />
+    <img src="media/exhibitPhotos/3.JPG" />
   </div>
   <div>
-    <img src="media/exhibitPhotos/4.jpg" />
+    <img src="media/exhibitPhotos/4.JPG" />
   </div>
   <div>
-    <img src="media/exhibitPhotos/5.jpg" />
+    <img src="media/exhibitPhotos/5.JPG" />
   </div>
   <div>
     <img src="media/exhibitPhotos/6.jpg" />
