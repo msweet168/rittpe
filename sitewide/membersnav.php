@@ -32,13 +32,13 @@
 		</div>
 
     </a></li>
-    <li><a class="<?= thisPage("surveys") ?>" href="surveys.php">
+    <li><a class="<?= thisPage("drive") ?>" href="drive.php">
 
     	<div class="navDiv">
 
 			<img src="media/icons/checked.svg" alt="profile" class="navImg">
 
-			<p class="navText">Surveys</p>
+			<p class="navText">Club Drive</p>
 
 		</div>
 

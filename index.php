@@ -10,7 +10,7 @@
 
 <div class="imageDiv">
 	<img src="media/headerPhotos/canadaAlpha.png" alt="Canada Group" class="headerPic"> 
-	<h1 class="pageTitle">RIT Theme park Enthusiasts</h1>
+	<h1 class="pageTitle">RIT Theme Park Enthusiasts</h1>
 </div>
 
 
@@ -31,14 +31,15 @@
 <h1 class="contentHeading">Who We Are:</h1>
 <p class="contentDesc"><?= $intro ?></p>
 
-<button type="button" class="detailButton">Our E-Board</button>
+<button onclick="window.location.href='index.php#eboard'" type="button" class="detailButton">Our E-Board</button>
 
 <h1 class="contentHeading">What We Do:</h1>
 <p class="contentDesc"><?= $activities?></p>
 
-<button type="button" class="detailButton">Past Events</button>
+<button onclick="window.location.href='exhibits.php'" type="button" class="detailButton">Past Events</button>
 
 <h1 class="contentHeading">Our E-Board:</h1>
+<a name='eboard'>
 <div id="eboardDiv">
 
 	<?php
@@ -55,16 +56,16 @@
 
 			while ($row = mysqli_fetch_assoc($eboardResult)) {
 
-				$fullname = "".$row['firstname']." ".$row['lastname']; 
 
+				$fullname = "".$row['firstname']." ".$row['lastname']; 
 				echo "
 					<div class=\"eboardProfile\">
-					<img src=\"media/eboardPhotos/mitchell.jpg\" alt=\"Profile Picture\" class=\"ePhoto\">
+					<img src=\"".$row["propic"]."\" alt=\"Profile Picture\" class=\"ePhoto\">
 					<p class=\"eName\">".$fullname."</p>
 					<p class=\"ePosition\">".$row["Position"]."</p>
 					<p class=\"eBio\">".$row["bio"]."</p>
 					<hr>
-					<button type=\"button\" class=\"eLink\" onclick=\"window.location.href=\"mailto:".$row['email']."\">@</button>
+					<button type=\"button\" class=\"eLink\" onclick=\"window.location.href='mailto:".$row["email"]."'\">@</button>
 					</div>
 					";
 

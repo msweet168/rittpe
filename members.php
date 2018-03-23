@@ -4,6 +4,55 @@
 	<title>TPE Members</title>
 <?php
 
+	if (!empty($_POST)) {
+
+		if ($_POST["email"] != $_SESSION['useremail'] && $_POST["email"] != "") {
+			if (strpos($_POST["email"], '@') && strpos($_POST["email"], '.')) {
+				$newEmail = htmlentities(strip_tags(trim($_POST["email"])));
+				$newEmail = mysqli_real_escape_string($mysqli, $newEmail);
+				$query = "UPDATE Profiles SET email = '".$newEmail."' WHERE id = '".$_SESSION['userid']."'";
+				$result = mysqli_query($mysqli, $query); 
+				if ($result > 0) {
+					$_SESSION['useremail'] = $newEmail;
+				}
+			}
+			else {
+				echo"Server cannot accept email.";
+			}
+		}
+
+		if ($_POST["coasters"] != $_SESSION['coastercount'] && $_POST["coasters"] != "") {
+
+			$newCount = htmlentities(strip_tags(trim($_POST["coasters"])));
+			$newCount = mysqli_real_escape_string($mysqli, $newCount);
+			$newIntCount = filter_var($newCount, FILTER_SANITIZE_NUMBER_INT);
+			$query = "UPDATE Profiles SET coastercount = '".$newIntCount."' WHERE id = '".$_SESSION['userid']."'";
+			$result = mysqli_query($mysqli, $query); 
+			if ($result > 0) {
+				$_SESSION['coastercount'] = $newCount;
+			}
+
+		}
+
+
+		if ($_POST["pass"] != "") {
+			if ($_POST["pass"] != $_POST["passconf"]){return;};
+			$newPass = $_POST['pass']; 
+			$newPass = htmlentities(strip_tags(trim($newPass)));
+			$newPass = mysqli_real_escape_string($mysqli, $newPass);
+			if (strlen($newPass) < 6){return;};
+			if (preg_match('/[A-Za-z].*[0-9]|[0-9].*[A-Za-z]/', $newPass))
+			{
+			    $newPass = sha1($newPass);
+			    $query = "UPDATE Profiles SET password = '".$newPass."' WHERE id = '".$_SESSION['userid']."'";
+			    $result = mysqli_query($mysqli, $query); 
+				if ($result > 0) {
+					header('Location: logout.php');
+				}
+			}
+		}
+	}
+
 
 	
 	if (!isset($_SESSION['loggedIn'])) {
@@ -31,13 +80,13 @@
 
 <div id="editPopup">
 	<h1 id="editTitle">Edit Profile</h1>
-	<form method="post" style="text-align: center;"> 
+	<form method="post" style="text-align: center;" autocomplete="off"> 
 	 	<p class="forgot">Edit your information and click "update."</p>
 
 	 	<div id="editHeader">
 	 		<p class="editFieldTitle">Email</p>
 	 		<p class="editFieldTitle">Coaster Count</p>
-	 	</div>
+	 	</div>  
 
 		<input name="email" class="editField" value="<?= $_SESSION["useremail"]?>"/>
 		<input name="coasters" class="editField" value="<?= $_SESSION["coastercount"]?>"/><br/>
@@ -47,7 +96,6 @@
 
 		<input type="submit" value="Update" class="editSubmitButton"/>
 		<button class="editSubmitButton" onclick="showEdit()" />Cancel</button>
-
 	</form>
 
 
@@ -109,7 +157,7 @@
 	</div>
 </div>
 
-<hr>
+<hr style="margin-top: 25px;">
 
 
 <?php
