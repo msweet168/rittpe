@@ -9,7 +9,7 @@
 ?>
 
 <div class="imageDiv">
-	<img src="media/headerPhotos/coaster1" alt="Coaster Lift" class="headerPic"> 
+	<img src="media/headerPhotos/coaster1.jpg" alt="Coaster Lift" class="headerPic"> 
 	<h1 class="pageTitleWhite">What We've Been Up To</h1>
 </div>
 

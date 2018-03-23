@@ -9,7 +9,7 @@
 ?>
 
 <div class="imageDiv">
-	<img src="media/headerPhotos/coaster2" alt="Coaster Lift" class="headerPic"> 
+	<img src="media/headerPhotos/coaster2.jpg" alt="Coaster Lift" class="headerPic"> 
 	<h1 class="pageTitleWhite">Our Exhibits</h1>
 </div>
 
@@ -20,22 +20,22 @@
 
 <div class="gallery cf">
   <div>
-    <img src="media/exhibitPhotos/1" />
+    <img src="media/exhibitPhotos/1.jpg" />
   </div>
   <div>
-    <img src="media/exhibitPhotos/3" />
+    <img src="media/exhibitPhotos/3.jpg" />
   </div>
   <div>
-    <img src="media/exhibitPhotos/4" />
+    <img src="media/exhibitPhotos/4.jpg" />
   </div>
   <div>
-    <img src="media/exhibitPhotos/5" />
+    <img src="media/exhibitPhotos/5.jpg" />
   </div>
   <div>
-    <img src="media/exhibitPhotos/6" />
+    <img src="media/exhibitPhotos/6.jpg" />
   </div>
   <div>
-    <img src="media/exhibitPhotos/7" />
+    <img src="media/exhibitPhotos/7.jpg" />
   </div>
 </div>
 
@@ -51,22 +51,22 @@
 
 <div class="gallery cf">
   <div>
-    <img src="media/exhibitPhotos/8" />
+    <img src="media/exhibitPhotos/8.jpg" />
   </div>
   <div>
-    <img src="media/exhibitPhotos/9" />
+    <img src="media/exhibitPhotos/9.jpg" />
   </div>
   <div>
-    <img src="media/exhibitPhotos/10" />
+    <img src="media/exhibitPhotos/10.jpg" />
   </div>
   <div>
-    <img src="media/exhibitPhotos/11" />
+    <img src="media/exhibitPhotos/11.jpg" />
   </div>
   <div>
-    <img src="media/exhibitPhotos/12" />
+    <img src="media/exhibitPhotos/12.jpg" />
   </div>
   <div>
-    <img src="media/exhibitPhotos/13" />
+    <img src="media/exhibitPhotos/13.jpg" />
   </div>
 </div>
 
