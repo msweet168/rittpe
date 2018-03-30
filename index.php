@@ -36,7 +36,7 @@
 <h1 class="contentHeading">What We Do:</h1>
 <p class="contentDesc"><?= $activities?></p>
 
-<button onclick="window.location.href='exhibits.php'" type="button" class="detailButton">Past Events</button>
+<button onclick="window.location.href='exhibits.php'" type="button" class="detailButton">Past Exhibits</button>
 
 <h1 class="contentHeading">Our E-Board:</h1>
 <a name='eboard'>
