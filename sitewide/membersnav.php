@@ -1,7 +1,7 @@
 
 <div class="sideBar" onmouseover="expand()" onmouseout="contract()">
 <ul class="memberNav" onmouseover="expand()" onmouseout="contract()" <?php echo($_SESSION['userpermission'] == "admin" ? 'style = "height: 720px;"' : 'style = "height: 425px;"');?>>
-	<li><a class="<?= thisPage("members") ?>" href="members.php">
+	<li><a class="<?= thisPage("members") ?>" href="members">
 		<div class="navDiv">
 
 			<img src="media/icons/profile.svg" alt="profile" class="navImg">
@@ -10,7 +10,7 @@
 
 		</div>
 	</a></li>
-    <li><a class="<?= thisPage("newsfeed") ?>" href="newsfeed.php">
+    <li><a class="<?= thisPage("newsfeed") ?>" href="newsfeed">
 
     	<div class="navDiv">
 
@@ -21,7 +21,7 @@
 		</div>
 
     </a></li>
-    <li><a class="<?= thisPage("chat") ?>" href="chat.php">
+    <li><a class="<?= thisPage("chat") ?>" href="chat">
 
     	<div class="navDiv">
 
@@ -32,7 +32,7 @@
 		</div>
 
     </a></li>
-    <li><a class="<?= thisPage("drive") ?>" href="drive.php">
+    <li><a class="<?= thisPage("drive") ?>" href="drive">
 
     	<div class="navDiv">
 
@@ -43,7 +43,7 @@
 		</div>
 
     </a></li>
-    <li><a class="<?= thisPage("trips") ?>" href="trips.php">
+    <li><a class="<?= thisPage("trips") ?>" href="trips">
 
     	<div class="navDiv">
 
@@ -54,7 +54,7 @@
 		</div>
 
     </a></li>
-    <li><a class="<?= thisPage("quotes") ?>" href="quotes.php">
+    <li><a class="<?= thisPage("quotes") ?>" href="quotes">
 
     	<div class="navDiv">
 
@@ -72,7 +72,7 @@
     		echo "
     			<hr>
 
-			    <li><a href=\"accountset.php\">
+			    <li><a href=\"accountset\">
 
 			    	<div class=\"navDiv\">
 
@@ -83,7 +83,7 @@
 					</div>
 
 			    </a></li>
-			    <li><a href=\"infoset.php\">
+			    <li><a href=\"infoset\">
 
 			    	<div class=\"navDiv\">
 
@@ -94,7 +94,7 @@
 					</div>
 
 			    </a></li>
-			    <li><a href=\"eventset.php\">
+			    <li><a href=\"eventset\">
 
 			    	<div class=\"navDiv\">
 
@@ -105,7 +105,7 @@
 					</div>
 
 			    </a></li>
-			    <li><a href=\"eboardset.php\">
+			    <li><a href=\"eboardset\">
 
 			    	<div class=\"navDiv\">
 
@@ -116,7 +116,7 @@
 					</div>
 
 			    </a></li>
-			    <li><a href=\"adminchat.php\">
+			    <li><a href=\"adminchat\">
 
 			    	<div class=\"navDiv\">
 
@@ -139,7 +139,7 @@
 
 <div class="membersHeader"> 
 	<h1 class="membersTitle">TPE Members</h1>
-	<button type="button" class="infoSiteButton" onclick="window.location.href='logout.php'">Log out</button>
+	<button type="button" class="infoSiteButton" onclick="window.location.href='logout'">Log out</button>
 </div>
 
 <div class="memberContent" id="memCont">
