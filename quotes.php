@@ -9,7 +9,6 @@
 
 		if(isset($_POST["hide"])) {
 			$query = "UPDATE Quotes SET hidden = true where quoteid = '".$_POST["hide"]."'";
-			//$query = "DELETE FROM Quotes WHERE quoteid = '".$_POST["hide"]."'";
 			mysqli_query($mysqli, $query);
 		}
 		else if($_POST["quote"]!="" && $_POST["quotee"]!=""){
@@ -36,10 +35,6 @@
     		echo"<p>Database error. Please try again...</p>";
     	}
 	}
-
-
-
-
 	
 	if (!isset($_SESSION['loggedIn'])) {
   		$_SESSION['loggedIn'] = FALSE;
@@ -57,9 +52,7 @@
   		// echo "Hello ".$_SESSION["userfirstname"]."! Everything is good, let's read some quotes!<br>";
 	}
 
-
 ?>
-
 
 <div class="membersPageTitle"> 
 	<span class="orangeTitle">Quotevault</span>
@@ -119,9 +112,6 @@
   }
 
 ?>
-
-
-
 
 </div>
 <script src="assets/js/scripts.js"></script>
