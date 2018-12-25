@@ -7,8 +7,9 @@
 	$quoteSuccess = "";
 	if (!empty($_POST)) {
 
-		if(isset($_POST["delete"])) {
-			$query = "DELETE FROM Quotes WHERE quoteid = '".$_POST["delete"]."'";
+		if(isset($_POST["hide"])) {
+			$query = "UPDATE Quotes SET hidden = true where quoteid = '".$_POST["hide"]."'";
+			//$query = "DELETE FROM Quotes WHERE quoteid = '".$_POST["hide"]."'";
 			mysqli_query($mysqli, $query);
 		}
 		else if($_POST["quote"]!="" && $_POST["quotee"]!=""){
@@ -66,10 +67,11 @@
 </div>
 
 <?php
-	// if($_SESSION['userpermission'] == "guest") {
-	// 	echo "<h2 style=\"text-align: center;\">Unfortunately, guests cannot view quotes. Please contact an Eboard member to be upgraded to a member account.</h2>";
-	//   	exit();
-	//  }
+	if($_SESSION['userpermission'] == "guest") {
+		echo "<h2 style=\"text-align: center;\">Unfortunately, guests cannot view quotes. </br> Please contact an Eboard member to upgrade your account.</h2>";
+		echo "<script src=\"assets/js/scripts.js\"></script>";
+	  	exit();
+	 }
 ?>
 
 <form id="quoteForm" method="post" onsubmit="return quoteValidate()">
@@ -90,6 +92,9 @@
 
   if ($result && $num_rows > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
+    	if ($row["hidden"] == true) {
+    		continue;
+    	}
 		echo "
 			<div class=\"quoteDiv\">
 				<div class=\"quoteHeader\">
@@ -104,7 +109,7 @@
 		if($_SESSION['userpermission'] == "admin") {
 			echo "
 				<form method=\"post\">
-					<button name=\"delete\" type=\"submit\" value=\"".$row["quoteid"]."\" class=\"quoteDelete\"/>Delete</button>
+					<button name=\"hide\" type=\"submit\" value=\"".$row["quoteid"]."\" class=\"quoteDelete\"/>Delete</button>
 				</form>
 			";
 
