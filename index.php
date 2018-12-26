@@ -45,7 +45,6 @@
 	<?php
 		$positions = array("President", "Vice President", "Treasurer", "Secretary", "Public Relations", "Faculty Advisor");
 
-
 		for ($i=0; $i<count($positions); $i++) { 
 			$eboardQuery = "SELECT Eboard.Position, Eboard.bio, Profiles.propic, Profiles.firstname, Profiles.lastname, Profiles.email
 							FROM Eboard 
