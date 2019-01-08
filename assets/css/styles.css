@@ -243,6 +243,10 @@ a {
 	margin-top: 25px; 
 }
 
+.exhibitsFooter {
+	margin-top: 60px;
+}
+
 
 #calendar {
 	display: block;
@@ -250,9 +254,6 @@ a {
 	margin-top: 30px; 
 	
 }
-
-
-
 
 .footer {
 	width: 100%; 
@@ -279,15 +280,51 @@ a {
 }
 
 
-
-
-
-
 @media screen and (max-width:975px) {
 
 	.contentDesc {
 		width: 90%; 
 		margin-right: 2%; 
+		font-size: 1em;
+	}
+
+	.pageTitleWhite {
+		font-size: 2.5em;
+		left: 20px;
+		right: 20px;
+	}
+
+	.exhibitsFooter {
+		width: 90%;
+		display: block;
+		margin: 0 auto;
+		margin-top: 60px;
+		font-size: 1.2em;
+	}
+
+	.gallery {
+		width: 210px; 
+	}
+
+	.gallery > div {
+	  float: none;
+	}
+
+	.gallery > div > img {
+		margin: 0 auto;
+	}
+
+	.gallery > div:hover > img {
+	  transform: none;
+	  transition: none;
+	}
+
+	.videoPlayer {
+		width: 90%;
+	}
+
+	#calendar {
+		width: 90%;
 	}
 
 }
