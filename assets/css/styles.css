@@ -11,7 +11,15 @@ a {
 }
 
 
+.centered {
+	margin: 0;
+	display: block;
+	margin: 0 auto;
+}
 
+.textCentered {
+	text-align: center;
+}
 
 .imageDiv {
 	width: 100vw; 
