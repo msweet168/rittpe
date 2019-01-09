@@ -97,14 +97,18 @@
 		<input type="submit" value="Update" class="editSubmitButton"/>
 		<button class="editSubmitButton" onclick="showEdit()" />Cancel</button>
 	</form>
-
-
 </div>
 
+<?php
+	$proPicPath = "media/icons/profileOrange.svg";
+	if ($_SESSION['picPath'] != null && $_SESSION['picPath'] != "") {
+		$proPicPath = $_SESSION['picPath'];
+	}
+?>
 
 <div class="infoPanels"> 
 	<div class="namePanel">
-		<img class="proPic" src="media/icons/profileOrange.svg" alt="Profile Picture">
+		<img class="proPic" src="<?=$proPicPath?>" alt="Profile Picture">
 
 		<div class="memName">
 			<h1 class="memberName"><?=$_SESSION['userfirstname'].' '.$_SESSION['userlastname']?></h1>
@@ -176,11 +180,18 @@
     	if ($row['username'] != $_SESSION['username'] && $row['username'] != "admin" && $row['username'] != "guest") {
 
     		$fullname = $row['firstname']." ".$row['lastname'];
+
+    		if ($row['propic'] != null) {
+				$proPicPath = $row['propic'];
+			} else {
+				$proPicPath = "media/icons/profileOrange.svg";
+			}
+
     		echo "
 				
 					<div class=\"memberPanels\"> 
 						<div class=\"panelTitleSec\">
-							<img class=\"miniProPic\" src=\"media/icons/profileOrange.svg\" alt=\"profile\">
+							<img class=\"miniProPic\" src=".$proPicPath." alt=\"profile\">
 							<p class=\"panelTitle\">".$fullname."</p>
 						</div>
 						<p class=\"panelInfo\"><strong> ".$row['status']."</strong></p>
