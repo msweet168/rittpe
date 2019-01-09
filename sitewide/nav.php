@@ -17,7 +17,7 @@
         </li>
 
         <li class = "hide">
-            <a class="<?= thisPage("index") ?>" href="index">About</a>
+            <a class="<?= thisPage("index") ?>" href=".">About</a>
         </li>
 
         <a href="index">
@@ -41,7 +41,7 @@
             </li>
         </a> 
 
-        <li class="hide"><a href="index">About</a></li>
+        <li class="hide"><a href=".">About</a></li>
         <li class="hide"><a href="feed">Feed</a></li>
         <li class="hide"><a href="exhibits">Exhibits</a></li>
         <li class="hide"><a href="events">Events</a></li>
