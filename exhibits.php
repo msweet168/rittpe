@@ -61,7 +61,7 @@
 	createExhibitGallery($makerFairePhotos);
 ?>
 
-<h2 class="textCentered exhibitsFooter">TPE exhibits are even more exiting when experienced in person. Check out our upcoming events!</h1>
+<h2 class="textCentered exhibitsFooter">TPE exhibits are even more exciting when experienced in person. Check out our upcoming events!</h1>
 
 <button onclick="window.location.href='events'" type="button" class="detailButton centered" style="margin-left: auto;">Future Events</button>
 
