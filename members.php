@@ -165,7 +165,7 @@
 
 
 <?php
-	$query = "SELECT firstname, lastname, status, username, email, coastercount, propic FROM Profiles";
+	$query = "SELECT firstname, lastname, status, username, email, coastercount, propic FROM Profiles ORDER BY firstname ASC";
 	$result = mysqli_query($mysqli, $query); 
   	$num_rows = mysqli_affected_rows($mysqli);
 
