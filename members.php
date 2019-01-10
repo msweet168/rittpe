@@ -187,6 +187,13 @@
 				$proPicPath = "media/icons/profileOrange.svg";
 			}
 
+			$statusMap = array(
+			    "activemember" => "Active Member",
+			    "inactivemember" => "Inactive Member",
+			    "eboard" => "eboard",
+			    "alumni" => "Alumni"
+			);
+
     		echo "
 				
 					<div class=\"memberPanels\"> 
@@ -194,10 +201,10 @@
 							<img class=\"miniProPic\" src=".$proPicPath." alt=\"profile\">
 							<p class=\"panelTitle\">".$fullname."</p>
 						</div>
-						<p class=\"panelInfo\"><strong> ".$row['status']."</strong></p>
+						<p class=\"panelInfo\"><strong> ".$statusMap[$row['status']]."</strong></p>
 						<p class=\"panelInfo\"><strong>Username: </strong>".$row['username']."</p>
 						<p class=\"panelInfo\"><strong>Email: </strong>".$row['email']."</p>
-						<p class=\"panelInfo\"><strong>Coastercount: </strong>".$row['coastercount']."</p>
+						<p class=\"panelInfo\"><strong>Coaster Count: </strong>".$row['coastercount']."</p>
 					</div>
     		";
 
