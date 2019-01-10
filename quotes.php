@@ -39,12 +39,12 @@
 	if (!isset($_SESSION['loggedIn'])) {
   		$_SESSION['loggedIn'] = FALSE;
 
-  		$_SESSION['redirect'] = "quotes.php"; 
-  		header('Location: login.php');
+  		$_SESSION['redirect'] = "quotes"; 
+  		header('Location: login');
 	} 
 	else if ($_SESSION['loggedIn'] == FALSE) {
-		$_SESSION['redirect'] = "quotes.php"; 
-		header('Location: login.php');
+		$_SESSION['redirect'] = "quotes"; 
+		header('Location: login');
 	}
 	else {
 		require_once("sitewide/header.php"); 

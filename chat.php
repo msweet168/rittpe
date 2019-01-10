@@ -7,12 +7,12 @@
 	if (!isset($_SESSION['loggedIn'])) {
   		$_SESSION['loggedIn'] = FALSE;
 
-  		$_SESSION['redirect'] = "chat.php"; 
-  		header('Location: login.php');
+  		$_SESSION['redirect'] = "chat"; 
+  		header('Location: login');
 	} 
 	else if ($_SESSION['loggedIn'] == FALSE) {
-		$_SESSION['redirect'] = "chat.php"; 
-		header('Location: login.php');
+		$_SESSION['redirect'] = "chat"; 
+		header('Location: login');
 	}
 	else {
 		require_once("sitewide/header.php"); 

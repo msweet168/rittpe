@@ -31,12 +31,12 @@
 <h1 class="contentHeading">Who We Are:</h1>
 <p class="contentDesc"><?= $intro ?></p>
 
-<button onclick="window.location.href='index.php#eboard'" type="button" class="detailButton">Our E-Board</button>
+<button onclick="window.location.href='index#eboard'" type="button" class="detailButton">Our E-Board</button>
 
 <h1 class="contentHeading">What We Do:</h1>
 <p class="contentDesc"><?= $activities?></p>
 
-<button onclick="window.location.href='exhibits.php'" type="button" class="detailButton">Past Exhibits</button>
+<button onclick="window.location.href='exhibits'" type="button" class="detailButton">Past Exhibits</button>
 
 <h1 class="contentHeading">Our E-Board:</h1>
 <a name='eboard'>

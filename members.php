@@ -47,7 +47,7 @@
 			    $query = "UPDATE Profiles SET password = '".$newPass."' WHERE id = '".$_SESSION['userid']."'";
 			    $result = mysqli_query($mysqli, $query); 
 				if ($result > 0) {
-					header('Location: logout.php');
+					header('Location: logout');
 				}
 			}
 		}
@@ -58,12 +58,12 @@
 	if (!isset($_SESSION['loggedIn'])) {
   		$_SESSION['loggedIn'] = FALSE;
 
-  		$_SESSION['redirect'] = "members.php"; 
-  		header('Location: login.php');
+  		$_SESSION['redirect'] = "members"; 
+  		header('Location: login');
 	} 
 	else if ($_SESSION['loggedIn'] == FALSE) {
-		$_SESSION['redirect'] = "members.php"; 
-		header('Location: login.php');
+		$_SESSION['redirect'] = "members"; 
+		header('Location: login');
 	}
 	else {
 		require_once("sitewide/header.php"); 

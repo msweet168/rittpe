@@ -7,7 +7,7 @@
 $loginFailed = false; 
 
 if ($_SESSION['loggedIn'] == true) {
-	header('Location: members.php');
+	header('Location: members');
 }
 
 if (!isset($_SESSION['loginRetries'])) {
@@ -56,7 +56,7 @@ if (!empty($_POST)) {
 	        mysqli_query($mysqli, "UPDATE Profiles SET lastlogin = \"".$timestamp."\" WHERE id = \"".$_SESSION['userid']."\"");
 
 	        if (!isset($_SESSION['redirect'])) {
-		  		$_SESSION['redirect'] = "members.php"; 
+		  		$_SESSION['redirect'] = "members"; 
 			} 
 
 	        header('Location: '.$_SESSION['redirect'].'');
@@ -68,7 +68,7 @@ if (!empty($_POST)) {
 	    	 	echo '<script>;
 				      alert("Please contact an Eboard member if you do not know your username or password.");
 				      </script>';
-	    	 	// header('Location: index.php');
+	    	 	//header('Location: index');
 	    	}	
 	    }
 
@@ -84,7 +84,7 @@ if (!empty($_POST)) {
 
 <div class="membersHeader"> 
 	<h1 class="membersTitle">TPE Members</h1>
-	<button type="button" onclick="window.location.href='index.php'" class="infoSiteButton">Exit Members</button>
+	<button type="button" onclick="window.location.href='.'" class="infoSiteButton">Exit Members</button>
 </div>
 
 
