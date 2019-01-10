@@ -54,7 +54,7 @@
 
   		foreach ($bios as $bio => $position) {
   			if ($_POST[$bio] != $unchangedEboard[$position]["bio"]) {
-  				$sanBio = htmlentities(strip_tags(trim($_POST["bio"])));
+  				$sanBio = htmlentities(strip_tags(trim($_POST[$bio])));
 	        	$sanBio = mysqli_real_escape_string($mysqli, $sanBio);
 
   				$query = "UPDATE Eboard SET bio = '".$sanBio."' WHERE Position = '".$position."'";
@@ -89,11 +89,11 @@
   		$purged = ""; 
   		foreach ($purgeArray as $usrs) {
   			if (!(in_array($usrs, $newArray))) {
-  				$purged .= $usrs." ";
+  				$purged .= ", ".$usrs;
   			}
   		}
   		if ($purged != "") {
-  			$successMessage .= "These users are no longer admins: ".$purged; 
+  			$successMessage .= "These users are no longer admins".$purged; 
   		}
   		$successMessage .= "</h2>";
 
