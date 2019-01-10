@@ -13,6 +13,8 @@
   		"advisor" => "Faculty Advisor"
   	);
 
+  	$successMessage = "";
+
 	if (!empty($_POST)) {
 
 		$query = "SELECT * FROM Eboard";
@@ -20,7 +22,6 @@
   		$num_rows = mysqli_affected_rows($mysqli);
 
   		$unchangedEboard = array();
-
   		if ($result && $num_rows > 0) {
   			while ($row = mysqli_fetch_assoc($result)) {
   				$unchangedEboard[$row['Position']] = array("username" => $row["username"], "bio" => $row["Bio"]);
@@ -42,9 +43,28 @@
   			array_push($newArray, $_POST[$simpleName]);
   		}
 
+  		$bios = array(
+  			"presBio" => "President",
+  			"vpBio" => "Vice President", 
+  			"treasurerBio" => "Treasurer", 
+  			"secretaryBio" => "Secretary", 
+  			"prBio" => "Public Relations", 
+  			"advisorBio" => "Faculty Advisor"
+  		);
+
+  		foreach ($bios as $bio => $position) {
+  			if ($_POST[$bio] != $unchangedEboard[$position]["bio"]) {
+  				$sanBio = htmlentities(strip_tags(trim($_POST["bio"])));
+	        	$sanBio = mysqli_real_escape_string($mysqli, $sanBio);
+
+  				$query = "UPDATE Eboard SET bio = '".$sanBio."' WHERE Position = '".$position."'";
+  				mysqli_query($mysqli, $query); 
+  			}
+  		}
+
   		// Purge old admins and eboard members and turn them into active members with member permissions.
   		foreach ($purgeArray as $user) {
-  			
+
   			$logout = false; 
   			if(in_array($_SESSION['username'], $purgeArray) && !(in_array($_SESSION['username'], $newArray))) {
   				$logout = true;
@@ -65,37 +85,17 @@
   			mysqli_query($mysqli, $query);
   		}
 
-
-  		print_r($purgeArray);
-  		print_r($newArray);
-
-
-
-
-		echo "<script>console.log(\"";
-
-		
-
-		// echo $unchangedEboard['President']['bio'];
-		// echo $unchangedEboard['Public Relations']['username'];
-
-
-
-		// echo $_POST["president"];
-		// echo $unchangedEboard["President"]["username"];
-		// echo $_POST["presBio"];
-		// echo $_POST["vicepresident"];
-		// echo $_POST["vpBio"];
-		// echo $_POST["treasurer"];
-		// echo $_POST["treasurerBio"];
-		// echo $_POST["secretary"];
-		// echo $_POST["secretaryBio"];
-		// echo $_POST["pr"];
-		// echo $_POST["prBio"];
-		// echo $_POST["advisor"];
-		// echo $_POST["advisorBio"];
-		echo "\")</script>";
-
+  		$successMessage = "<h2 class=\"eboardSuccessMsg\"> Eboard has been updated. "; 
+  		$purged = ""; 
+  		foreach ($purgeArray as $usrs) {
+  			if (!(in_array($usrs, $newArray))) {
+  				$purged .= $usrs." ";
+  			}
+  		}
+  		if ($purged != "") {
+  			$successMessage .= "These users are no longer admins: ".$purged; 
+  		}
+  		$successMessage .= "</h2>";
 
 	}
 	
@@ -122,6 +122,7 @@
 <div class="membersPageTitle"> 
 	<span class="orangeTitle">Eboard Settings</span>
 	<h2 class="memPageDesc">Edit the current TPE eboard</h2>
+	<?=$successMessage?>
 </div>
 
 <?php
