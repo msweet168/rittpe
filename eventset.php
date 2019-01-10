@@ -7,16 +7,16 @@
 	if (!isset($_SESSION['loggedIn'])) {
   		$_SESSION['loggedIn'] = FALSE;
 
-  		$_SESSION['redirect'] = "eventset"; 
-  		header('Location: login');
+  		$_SESSION['redirect'] = "accountset.php"; 
+  		header('Location: login.php');
 	} 
 	else if ($_SESSION['loggedIn'] == FALSE) {
-		$_SESSION['redirect'] = "eventset"; 
-		header('Location: login');
+		$_SESSION['redirect'] = "accountset.php"; 
+		header('Location: login.php');
 	}
 	else {
 		if ($_SESSION['userpermission'] != "admin") {
-			header('Location: members');
+			header('Location: members.php');
 		}
 		require_once("sitewide/header.php"); 
 	    require_once("sitewide/membersnav.php");

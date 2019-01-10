@@ -7,12 +7,12 @@
 	if (!isset($_SESSION['loggedIn'])) {
   		$_SESSION['loggedIn'] = FALSE;
 
-  		$_SESSION['redirect'] = "trips"; 
-  		header('Location: login');
+  		$_SESSION['redirect'] = "trips.php"; 
+  		header('Location: login.php');
 	} 
 	else if ($_SESSION['loggedIn'] == FALSE) {
-		$_SESSION['redirect'] = "trips"; 
-		header('Location: login');
+		$_SESSION['redirect'] = "trips.php"; 
+		header('Location: login.php');
 	}
 	else {
 		require_once("sitewide/header.php"); 
