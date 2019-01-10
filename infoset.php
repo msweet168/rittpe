@@ -4,13 +4,10 @@
 	<title>TPE Site Info</title>
 <?php
 
-
 	if (!empty($_POST)) {
 		$query = "UPDATE ClubInfo SET Intro = '".$_POST["info"]."', Activities = '".$_POST["activities"]."'";
 		mysqli_query($mysqli, $query);
 	}
-
-
 	
 	if (!isset($_SESSION['loggedIn'])) {
   		$_SESSION['loggedIn'] = FALSE;
