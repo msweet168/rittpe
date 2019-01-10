@@ -67,6 +67,7 @@
 
   			$logout = false; 
   			if(in_array($_SESSION['username'], $purgeArray) && !(in_array($_SESSION['username'], $newArray))) {
+  				//TODO: Add alert notifying the current user that they will be logged out after the update and will no longer be an admin.
   				$logout = true;
   			}
 
@@ -152,7 +153,6 @@
   	header('Location: servererr');
   }
 
-
   function getUserOptions($allUsers, $position, $currentEboard) {
 
   	$positionMap = array(
@@ -216,7 +216,6 @@
 	<input class="infoSubmit eboardSubmit" type="submit" value="Update">
 
 </form>
-
 
 </div>
 <script src="assets/js/scripts.js"></script>
