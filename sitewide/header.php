@@ -15,4 +15,11 @@
             echo "current";
         }
     }
+
+    function thisStr($page){
+        $this_page = substr(strtolower(basename($_SERVER['PHP_SELF'])),0,strlen(basename($_SERVER['PHP_SELF']))-4);
+        if($this_page == $page){
+            return "current";
+        }
+    }
 ?>

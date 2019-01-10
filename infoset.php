@@ -4,13 +4,10 @@
 	<title>TPE Site Info</title>
 <?php
 
-
 	if (!empty($_POST)) {
 		$query = "UPDATE ClubInfo SET Intro = '".$_POST["info"]."', Activities = '".$_POST["activities"]."'";
 		mysqli_query($mysqli, $query);
 	}
-
-
 	
 	if (!isset($_SESSION['loggedIn'])) {
   		$_SESSION['loggedIn'] = FALSE;
@@ -33,8 +30,8 @@
 ?>
 
 <div class="membersPageTitle"> 
-	<span class="orangeTitle">Info Site Settings</span>
-	<h2 class="memPageDesc">Edit information on the TPE info site</h2>
+	<span class="orangeTitle">Introduction Settings</span>
+	<h2 class="memPageDesc">Edit introduction on the about page</h2>
 </div>
 
 <?php
@@ -61,7 +58,7 @@
 <h1 class="infoHeading">Club Intro:</h1>
 	<textarea name="info" class="infoTextBox"><?= $intro ?></textarea>
 <h1 class="infoHeading">What We Do:</h1>
-	<textarea name="activities" class="infoTextBox"><?= $activities ?></textarea>
+	<textarea name="activities" class="infoTextBox"><?= $activities ?></textarea></br>
 	<input type="submit" value="Save" class="infoSubmit"/>
 </form>
 
