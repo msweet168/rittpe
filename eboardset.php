@@ -3,6 +3,101 @@
 ?>
 	<title>TPE Eboard</title>
 <?php
+
+	$positionMap = array(
+  		"president" => "President",
+  		"vicepresident" => "Vice President",
+  		"treasurer" => "Treasurer",
+  		"secretary" => "Secretary",
+  		"pr" => "Public Relations",
+  		"advisor" => "Faculty Advisor"
+  	);
+
+	if (!empty($_POST)) {
+
+		$query = "SELECT * FROM Eboard";
+  		$result = mysqli_query($mysqli, $query);
+  		$num_rows = mysqli_affected_rows($mysqli);
+
+  		$unchangedEboard = array();
+
+  		if ($result && $num_rows > 0) {
+  			while ($row = mysqli_fetch_assoc($result)) {
+  				$unchangedEboard[$row['Position']] = array("username" => $row["username"], "bio" => $row["Bio"]);
+  			}
+  		} else {
+  			header('Location: servererr');
+  		}
+
+  		$purgeArray = array();
+  		$newArray = array();
+
+  		foreach($positionMap as $simpleName => $databaseName) {
+  			if ($_POST[$simpleName] != $unchangedEboard[$databaseName]["username"]) {
+  				$query = "UPDATE Eboard SET username = '".$_POST[$simpleName]."' WHERE Position = '".$databaseName."'";
+  				mysqli_query($mysqli, $query);
+
+  				array_push($purgeArray, $unchangedEboard[$databaseName]["username"]);
+  			}
+  			array_push($newArray, $_POST[$simpleName]);
+  		}
+
+  		// Purge old admins and eboard members and turn them into active members with member permissions.
+  		foreach ($purgeArray as $user) {
+  			
+  			$logout = false; 
+  			if(in_array($_SESSION['username'], $purgeArray) && !(in_array($_SESSION['username'], $newArray))) {
+  				$logout = true;
+  			}
+
+  			$query = "UPDATE Profiles SET status = 'activemember', permission = 'member' WHERE username = '".$user."'";
+  			mysqli_query($mysqli, $query);
+
+  			if ($logout) {
+  				header('Location: logout');
+  			}
+
+  		}
+
+  		// Ensure all of eboard have eboard statuses and are admins. 
+  		foreach ($newArray as $user) {
+  			$query = "UPDATE Profiles SET status = 'eboard', permission = 'admin' WHERE username = '".$user."'";
+  			mysqli_query($mysqli, $query);
+  		}
+
+
+  		print_r($purgeArray);
+  		print_r($newArray);
+
+
+
+
+		echo "<script>console.log(\"";
+
+		
+
+		// echo $unchangedEboard['President']['bio'];
+		// echo $unchangedEboard['Public Relations']['username'];
+
+
+
+		// echo $_POST["president"];
+		// echo $unchangedEboard["President"]["username"];
+		// echo $_POST["presBio"];
+		// echo $_POST["vicepresident"];
+		// echo $_POST["vpBio"];
+		// echo $_POST["treasurer"];
+		// echo $_POST["treasurerBio"];
+		// echo $_POST["secretary"];
+		// echo $_POST["secretaryBio"];
+		// echo $_POST["pr"];
+		// echo $_POST["prBio"];
+		// echo $_POST["advisor"];
+		// echo $_POST["advisorBio"];
+		echo "\")</script>";
+
+
+	}
 	
 	if (!isset($_SESSION['loggedIn'])) {
   		$_SESSION['loggedIn'] = FALSE;
@@ -44,19 +139,29 @@
   	header('Location: servererr');
   }
 
-  $query = "SELECT username, position, bio FROM Eboard";
+  $query = "SELECT * FROM Eboard";
   $result = mysqli_query($mysqli, $query);
   $num_rows = mysqli_affected_rows($mysqli);  
   $currentEboard = array();
   if ($result && $num_rows > 0) {
   	while ($row = mysqli_fetch_assoc($result)) {
-  		$currentEboard[$row['position']] = array($row['username'], $row['bio']);
+  		$currentEboard[$row['Position']] = array($row['username'], $row['Bio']);
   	}
   } else {
   	header('Location: servererr');
   }
 
+
   function getUserOptions($allUsers, $position, $currentEboard) {
+
+  	$positionMap = array(
+  		"president" => "President",
+  		"vicepresident" => "Vice President",
+  		"treasurer" => "Treasurer",
+  		"secretary" => "Secretary",
+  		"pr" => "Public Relations",
+  		"advisor" => "Faculty Advisor"
+  	);
 
   	$userOptions = "";
   	foreach($allUsers as $name => $username) {
@@ -65,7 +170,7 @@
   		}
 
   		$userOptions .= "<option value=\"$username\"";
-  		if ($currentEboard["$position"][0] == $username) {
+  		if ($currentEboard[$positionMap["$position"]][0] == $username) {
   			$userOptions .= " selected";
   		}
   		$userOptions .= ">$name ($username)</option>";
@@ -76,7 +181,7 @@
 
   function createPositionUserSelect($position, $allUsers, $currentEboard) {
   	$options = getUserOptions($allUsers, $position, $currentEboard);
-  	echo "<select class=\"positionSelect\"name=\"$position\">".$options."</select>";
+  	echo "<select class=\"positionSelect\"name=\"$position\">".$options."</select></br>";
   }
 
 ?>
@@ -84,30 +189,30 @@
 <form class="eboardForm" method="post">
 
 	<h1 class="positionTitle">President</h1>
-	<?php createPositionUserSelect("President", $allUsers, $currentEboard)?>
-	<input type="text" class="bioInput" name="presBio" placeholder="Enter bio..." value="<?=$currentEboard["President"][1]?>">
+	<?php createPositionUserSelect("president", $allUsers, $currentEboard)?>
+	<textarea class="bioTextArea" name="presBio" placeholder="Enter bio..."><?=$currentEboard["President"][1]?></textarea>
 	
 	<h1 class="positionTitle">Vice President</h1>
-	<?php createPositionUserSelect("Vice President", $allUsers, $currentEboard)?>
-	<input type="text" class="bioInput" name="vpBio" placeholder="Enter bio..." value="<?=$currentEboard["Vice President"][1]?>">
+	<?php createPositionUserSelect("vicepresident", $allUsers, $currentEboard)?>
+	<textarea class="bioTextArea" name="vpBio" placeholder="Enter bio..."><?=$currentEboard["Vice President"][1]?></textarea>
 
 	<h1 class="positionTitle">Treasurer</h1>
-	<?php createPositionUserSelect("Treasurer", $allUsers, $currentEboard)?>
-	<input type="text" class="bioInput" name="treasurerBio" placeholder="Enter bio..." value="<?=$currentEboard["Treasurer"][1]?>">
+	<?php createPositionUserSelect("treasurer", $allUsers, $currentEboard)?>
+	<textarea class="bioTextArea" name="treasurerBio" placeholder="Enter bio..."><?=$currentEboard["Treasurer"][1]?></textarea>
 
 	<h1 class="positionTitle">Secretary</h1>
-	<?php createPositionUserSelect("Secretary", $allUsers, $currentEboard)?>
-	<input type="text" class="bioInput" name="secretaryBio" placeholder="Enter bio..." value="<?=$currentEboard["Secretary"][1]?>">
+	<?php createPositionUserSelect("secretary", $allUsers, $currentEboard)?>
+	<textarea class="bioTextArea" name="secretaryBio" placeholder="Enter bio..."><?=$currentEboard["Secretary"][1]?></textarea>
 
 	<h1 class="positionTitle">Public Relations</h1>
-	<?php createPositionUserSelect("Public Relations", $allUsers, $currentEboard)?>
-	<input type="text" class="bioInput" name="prBio" placeholder="Enter bio..." value="<?=$currentEboard["Public Relations"][1]?>">
+	<?php createPositionUserSelect("pr", $allUsers, $currentEboard)?>
+	<textarea class="bioTextArea" name="prBio" placeholder="Enter bio..."><?=$currentEboard["Public Relations"][1]?></textarea>
 
-	<h1 class="positionTitle">advisor</h1>
-	<?php createPositionUserSelect("Faculty Advisor", $allUsers, $currentEboard)?>
-	<input type="text" class="bioInput" name="advisorBio" placeholder="Enter bio..." value="<?=$currentEboard["Faculty Advisor"][1]?>">
-
-	<input class="eboardSubmit" type="submit">
+	<h1 class="positionTitle">Faculty Advisor</h1>
+	<?php createPositionUserSelect("advisor", $allUsers, $currentEboard)?>
+	<textarea class="bioTextArea" name="advisorBio" placeholder="Enter bio..."><?=$currentEboard["Faculty Advisor"][1]?></textarea>
+	</br>
+	<input class="infoSubmit eboardSubmit" type="submit" value="Update">
 
 </form>
 
