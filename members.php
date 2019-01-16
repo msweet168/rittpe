@@ -97,14 +97,18 @@
 		<input type="submit" value="Update" class="editSubmitButton"/>
 		<button class="editSubmitButton" onclick="showEdit()" />Cancel</button>
 	</form>
-
-
 </div>
 
+<?php
+	$proPicPath = "media/icons/profileOrange.svg";
+	if ($_SESSION['picPath'] != null && $_SESSION['picPath'] != "") {
+		$proPicPath = $_SESSION['picPath'];
+	}
+?>
 
 <div class="infoPanels"> 
 	<div class="namePanel">
-		<img class="proPic" src="media/icons/profileOrange.svg" alt="Profile Picture">
+		<img class="proPic" src="<?=$proPicPath?>" alt="Profile Picture">
 
 		<div class="memName">
 			<h1 class="memberName"><?=$_SESSION['userfirstname'].' '.$_SESSION['userlastname']?></h1>
@@ -161,7 +165,7 @@
 
 
 <?php
-	$query = "SELECT firstname, lastname, status, username, email, coastercount, propic FROM Profiles";
+	$query = "SELECT firstname, lastname, status, username, email, coastercount, propic FROM Profiles ORDER BY firstname ASC";
 	$result = mysqli_query($mysqli, $query); 
   	$num_rows = mysqli_affected_rows($mysqli);
 
@@ -176,17 +180,31 @@
     	if ($row['username'] != $_SESSION['username'] && $row['username'] != "admin" && $row['username'] != "guest") {
 
     		$fullname = $row['firstname']." ".$row['lastname'];
+
+    		if ($row['propic'] != null) {
+				$proPicPath = $row['propic'];
+			} else {
+				$proPicPath = "media/icons/profileOrange.svg";
+			}
+
+			$statusMap = array(
+			    "activemember" => "Active Member",
+			    "inactivemember" => "Inactive Member",
+			    "eboard" => "eboard",
+			    "alumni" => "Alumni"
+			);
+
     		echo "
 				
 					<div class=\"memberPanels\"> 
 						<div class=\"panelTitleSec\">
-							<img class=\"miniProPic\" src=\"media/icons/profileOrange.svg\" alt=\"profile\">
+							<img class=\"miniProPic\" src=".$proPicPath." alt=\"profile\">
 							<p class=\"panelTitle\">".$fullname."</p>
 						</div>
-						<p class=\"panelInfo\"><strong> ".$row['status']."</strong></p>
+						<p class=\"panelInfo\"><strong> ".$statusMap[$row['status']]."</strong></p>
 						<p class=\"panelInfo\"><strong>Username: </strong>".$row['username']."</p>
 						<p class=\"panelInfo\"><strong>Email: </strong>".$row['email']."</p>
-						<p class=\"panelInfo\"><strong>Coastercount: </strong>".$row['coastercount']."</p>
+						<p class=\"panelInfo\"><strong>Coaster Count: </strong>".$row['coastercount']."</p>
 					</div>
     		";
 

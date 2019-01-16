@@ -68,11 +68,13 @@
 
     <?php
 
+    $dog = "woof";
+
     	if ($_SESSION['userpermission'] == "admin") {
     		echo "
     			<hr>
 
-			    <li><a href=\"accountset\">
+			    <li><a class=\"".thisStr("accountset")."\" href=\"accountset\">
 
 			    	<div class=\"navDiv\">
 
@@ -83,7 +85,7 @@
 					</div>
 
 			    </a></li>
-			    <li><a href=\"infoset\">
+			    <li><a class=\"".thisStr("infoset")."\" href=\"infoset\">
 
 			    	<div class=\"navDiv\">
 
@@ -94,7 +96,7 @@
 					</div>
 
 			    </a></li>
-			    <li><a href=\"eventset\">
+			    <li><a class=\"".thisStr("eventset")."\" href=\"eventset\">
 
 			    	<div class=\"navDiv\">
 
@@ -105,7 +107,7 @@
 					</div>
 
 			    </a></li>
-			    <li><a href=\"eboardset\">
+			    <li><a class=\"".thisStr("eboardset")."\" href=\"eboardset\">
 
 			    	<div class=\"navDiv\">
 
@@ -116,7 +118,7 @@
 					</div>
 
 			    </a></li>
-			    <li><a href=\"adminchat\">
+			    <li><a class=\"".thisStr("adminchat")."\" href=\"adminchat\">
 
 			    	<div class=\"navDiv\">
 
@@ -143,4 +145,3 @@
 </div>
 
 <div class="memberContent" id="memCont">
-

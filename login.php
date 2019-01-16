@@ -92,12 +92,14 @@ if (!empty($_POST)) {
 	<h1 id="loginTitle">Login to TPE Members</h1>
 
 	<?php
+		$unFieldText = "";
 		if ($loginFailed == true) {
 			echo"<p id=\"loginError\">Incorrect username or password.</p>";
+			$unFieldText = $username;
 		}
 	?>
 	<form method = "post" style="clear:both;">
-	  <input name = "username" placeholder="Enter your username or email." id="userField" class="loginField"/><br/>
+	  <input name = "username" placeholder="Enter your username or email." id="userField" class="loginField" value="<?=$unFieldText?>" /><br/>
 	  <input type = "password" name="password" placeholder="Enter your password." id="passField" class="loginField"/><br/>
 	  <p class="forgot">Forgot username or password?<br>Contact an Eboard member.</p>
 	  <input type="submit" value="Login" id="loginButton"/>
