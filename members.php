@@ -6,6 +6,11 @@
 
 	if (!empty($_POST)) {
 
+		if ($_SESSION["userpermission"] == "guest") {
+			header('Location: ./');
+			exit();
+		}
+
 		if ($_POST["email"] != $_SESSION['useremail'] && $_POST["email"] != "") {
 			if (strpos($_POST["email"], '@') && strpos($_POST["email"], '.')) {
 				$newEmail = htmlentities(strip_tags(trim($_POST["email"])));
