@@ -21,7 +21,7 @@
         </li>
 
         <a href="index">
-            <li style="float:left"><img src="media/logos/Site_Titlesml.png" alt="Site Logo" id="logo">
+            <li style="float:left"><img src="media/aprilfools19/Site_Titlesml.png" alt="Site Logo" id="logo">
             </li>
         </a> 
 
@@ -37,7 +37,7 @@
     <ul class="topnav" id="mytopnav">
 
         <a href="index">
-            <li id="logoli"><img src="media/logos/Site_Titlesml.png" alt="Site Logo" id="logo">
+            <li id="logoli"><img src="media/aprilfools19/Site_Titlesml.png" alt="Site Logo" id="logo">
             </li>
         </a> 
 

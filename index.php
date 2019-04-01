@@ -9,8 +9,8 @@
 ?>
 
 <div class="imageDiv">
-	<img src="media/headerPhotos/canadaAlpha.png" alt="Canada Group" class="headerPic"> 
-	<h1 class="pageTitle">RIT Theme Park Enthusiasts</h1>
+	<img src="media/aprilfools19/coastermeme.jpg" alt="Canada Group" class="headerPic"> 
+	<h1 class="pageTitle">RIT Meme Park Enthusiasts</h1>
 </div>
 
 
@@ -31,14 +31,14 @@
 <h1 class="contentHeading">Who We Are:</h1>
 <p class="contentDesc"><?= $intro ?></p>
 
-<button onclick="window.location.href='index.php#eboard'" type="button" class="detailButton">Our E-Board</button>
+<button onclick="window.location.href='index.php#eboard'" type="button" class="detailButton">Our Meme-Board</button>
 
 <h1 class="contentHeading">What We Do:</h1>
 <p class="contentDesc"><?= $activities?></p>
 
 <button onclick="window.location.href='exhibits.php'" type="button" class="detailButton">Past Exhibits</button>
 
-<h1 class="contentHeading">Our E-Board:</h1>
+<h1 class="contentHeading">Our Meme-Board:</h1>
 <a name='eboard'>
 <div id="eboardDiv">
 
