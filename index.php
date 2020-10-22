@@ -9,7 +9,7 @@
 ?>
 
 <div class="imageDiv">
-	<img src="media/headerPhotos/canadaAlpha.png" alt="Canada Group" class="headerPic"> 
+	<img src="media/headerPhotos/sixflagsalpha.png" alt="Canada Group" class="headerPic"> 
 	<h1 class="pageTitle">RIT Theme Park Enthusiasts</h1>
 </div>
 
